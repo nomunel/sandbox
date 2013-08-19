@@ -20,14 +20,8 @@
     display: -webkit-box;
     position: absolute;
     left: 50%;
-    transition: -webkit-transform 0.2s ease;
-    transition: transform 0.5s ease;
 }
 #carouselBnr .banners li{
-}
-#carouselBnr button{
-    position: absolute;
-    bottom: 0;
 }
 #carouselBnr .nav{
     position: absolute;
@@ -42,6 +36,14 @@
 }
 #carouselBnr .nav li.current{
     color: #666;
+}
+
+#carouselBnr button{
+    position: absolute;
+    bottom: 0;
+}
+#carouselBnr button.disable{
+    color: #ccc;
 }
 #carouselBnr .prev{
     left: 10px;
@@ -79,11 +81,13 @@ var carousel = new ui.Carousel({
     carouselElm: carouselBnr,
     liWrapElm: carouselBnr.querySelector('.banners'),
     liElms: carouselBnr.querySelectorAll('.banners li'),
-    liWidth: 320,
     navElms: carouselBnr.querySelectorAll('.nav li'),
     prevBtnElm: carouselBnr.querySelector('.prev'),
     nextBtnElm: carouselBnr.querySelector('.next'),
-    debugMode: true
+    liWidth: 320,
+    liIndex: 0,
+    loopTime: 3000,
+    debugMode: false
 });
 </script>
 </body>
