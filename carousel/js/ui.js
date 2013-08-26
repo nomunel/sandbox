@@ -50,7 +50,7 @@ fn.init = function(element, opt){
     self.liElms = element.querySelectorAll(opt.liElms);
     self.liWidth = opt.liWidth;
     self.liIndex = opt.liIndex || 0;
-    self.flick = (!opt.flick) ? false : true;
+    self.flick = (opt.flick == false) ? false : true;
     self.navElms = element.querySelectorAll(opt.navElms);
     self.prevBtnElm = element.querySelector(opt.prevBtnElm);
     self.nextBtnElm = element.querySelector(opt.nextBtnElm);
