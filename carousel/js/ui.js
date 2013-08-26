@@ -9,7 +9,7 @@ var support = {
 var ns = g.ui = {},
     i,
     il;
-ns.transform = function(elm, x, duration){
+ns.translateX = function(elm, x, duration){
     var style = elm.style,
         prop = support.translate3d
         ? 'translate3d(' + x +'px, 0, 0)'
@@ -50,7 +50,7 @@ fn.init = function(element, opt){
     self.liElms = element.querySelectorAll(opt.liElms);
     self.liWidth = opt.liWidth;
     self.liIndex = opt.liIndex || 0;
-    self.flick = (opt.flick===undefined) ? true : opt.flick;
+    self.flick = (!opt.flick) ? false : true;
     self.navElms = element.querySelectorAll(opt.navElms);
     self.prevBtnElm = element.querySelector(opt.prevBtnElm);
     self.nextBtnElm = element.querySelector(opt.nextBtnElm);
@@ -124,7 +124,6 @@ fn.prev = function(){
         self.move(self.liIndex);
     }else{
         self.move(self.liIndex);
-        console.log('これ以上戻れません');
     }
 }
 
@@ -135,7 +134,6 @@ fn.next = function(){
         self.move(self.liIndex);
     }else{
         self.move(self.liIndex);
-        console.log('これ以上送れません');
     }
 }
 
@@ -163,7 +161,7 @@ fn.move = function(index){
             nextBtnElm.classList.remove('disable');
         }
     }
-    ui.transform(self.liWrapElm, self.liWidth * -index, '300ms');
+    ui.translateX(self.liWrapElm, self.liWidth * -index, '300ms');
 }
 
 fn.swipe = function(){
@@ -175,7 +173,7 @@ fn.swipe = function(){
     function drag(){
         var diffX = self.touchstartX - self.touchmoveX,
             x = self.liIndex * self.liWidth + diffX;
-        ui.transform(elm, -x, '0');
+        ui.translateX(elm, -x, '0');
     }
     function toPrevNext(){
         var blankSpace = 50;
