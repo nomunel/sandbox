@@ -54,14 +54,14 @@ fn.init = function(element, opt){
     self.navElms = element.querySelectorAll(opt.navElms);
     self.prevBtnElm = element.querySelector(opt.prevBtnElm);
     self.nextBtnElm = element.querySelector(opt.nextBtnElm);
-    self.loopTime = opt.loopTime;
+    self.autoPlayInterval = opt.autoPlayInterval;
 
     self.move(self.liIndex);
     self.liWrapElm.style.marginLeft = -self.liWidth/2 + 'px';
     if(self.flick){
         self.activateFlick();
     }
-    if(self.loopTime){
+    if(self.autoPlayInterval){
         self.activateAutoPlay();
     }
     if(self.prevBtnElm || self.nextBtnElm){
@@ -76,14 +76,14 @@ fn.activateFlick = function(){
     self.liWrapElm.addEventListener('touchstart', function(){
         self.touchstartX = event.touches[0].pageX;
         self.swipe();
-        if(self.loopTime)self.autoPlay_stop();
+        if(self.autoPlayInterval)self.autoPlay_stop();
     }, false);
     self.liWrapElm.addEventListener('touchmove', function(){
         self.touchmoveX = event.touches[0].pageX;
     }, false);
     self.liWrapElm.addEventListener('touchend', function(){
         self.touchendX = event.changedTouches[0].pageX;
-        if(self.loopTime)self.autoPlay();
+        if(self.autoPlayInterval)self.autoPlay();
     }, false);
 }
 fn.activateAutoPlay = function(){
@@ -96,7 +96,7 @@ fn.activateAutoPlay = function(){
                 self.liIndex = 0;
                 self.move(0);
             }
-        }, self.loopTime);
+        }, self.autoPlayInterval);
     }
     self.autoPlay_stop = function(){
         clearInterval(self.control);
@@ -109,11 +109,11 @@ fn.activateNav = function(){
     self.nextBtnElm.addEventListener('touchstart', self.autoPlay_stop, false);
     self.prevBtnElm.addEventListener('touchend', function(){
         self.prev();
-        if(self.loopTime)self.autoPlay();
+        if(self.autoPlayInterval)self.autoPlay();
     }, false);
     self.nextBtnElm.addEventListener('touchend', function(){
         self.next();
-        if(self.loopTime)self.autoPlay();
+        if(self.autoPlayInterval)self.autoPlay();
     }, false);
 }
 
