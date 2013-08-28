@@ -19,4 +19,47 @@ img{
     vertical-align: top;
 }
 
+/* carouselBnr */
+.carouselBnr{
+    position: relative;
+    height: 130px;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+.carouselBnr .banners{
+    display: -webkit-box;
+    position: absolute;
+    left: 50%;
+    margin-left: -160px;
+}
+.carouselBnr .banners li{
+}
+.carouselBnr .nav{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+.carouselBnr .nav li{
+    display: inline-block;
+    color: #ccc;
+}
+.carouselBnr .nav li.current{
+    color: #666;
+}
 
+.carouselBnr button{
+    position: absolute;
+    bottom: 0;
+}
+.carouselBnr button.disable{
+    color: #ccc;
+}
+.carouselBnr .prev{
+    left: 10px;
+}
+.carouselBnr .next{
+    right: 10px;
+}

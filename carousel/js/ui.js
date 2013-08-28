@@ -5,8 +5,8 @@ var support = {
     translate3d: ('WebKitCSSMatrix'in window&&'m11'in new WebKitCSSMatrix())
 };
 
-(function(g, d){
-var ns = g.ui = {},
+(function(global, document){
+var ns = global.ui = {},
     i,
     il;
 ns.translateX = function(elm, x, duration){
@@ -31,8 +31,8 @@ ns.preventDefault = function(){
 })(this, this.document);
 
 // Carousel
-(function(g, d){
-var ns = g.ui,
+(function(global, document){
+var ns = global.ui,
     i,
     il;
 ns.Carousel = function(){
@@ -46,18 +46,17 @@ fn.init = function(element, opt){
     if (typeof element === 'string') {
         self.element = document.querySelector(element);
     }
-    self.liWrapElm = element.querySelector(opt.liWrapElm);
-    self.liElms = element.querySelectorAll(opt.liElms);
+    self.liWrapElm = self.element.querySelector(opt.liWrapElm);
+    self.liElms = self.element.querySelectorAll(opt.liElms);
     self.liWidth = opt.liWidth;
     self.liIndex = opt.liIndex || 0;
     self.flick = (opt.flick == false) ? false : true;
-    self.navElms = element.querySelectorAll(opt.navElms);
-    self.prevBtnElm = element.querySelector(opt.prevBtnElm);
-    self.nextBtnElm = element.querySelector(opt.nextBtnElm);
+    self.navElms = self.element.querySelectorAll(opt.navElms);
+    self.prevBtnElm = self.element.querySelector(opt.prevBtnElm);
+    self.nextBtnElm = self.element.querySelector(opt.nextBtnElm);
     self.autoPlayInterval = opt.autoPlayInterval;
 
     self.move(self.liIndex);
-    self.liWrapElm.style.marginLeft = -self.liWidth/2 + 'px';
     if(self.flick){
         self.activateFlick();
     }
@@ -193,16 +192,16 @@ fn.swipe = function(){
 }
 fn.debug = function(){
     var self = this,
-        sElm = d.createElement('p'),
-        mElm = d.createElement('p'),
-        eElm = d.createElement('p'),
-        indexElm = d.createElement('p'),
+        sElm = document.createElement('p'),
+        mElm = document.createElement('p'),
+        eElm = document.createElement('p'),
+        indexElm = document.createElement('p'),
         bnrImgElms = self.liWrapElm.querySelectorAll('li img');
 
-    d.body.appendChild(sElm);
-    d.body.appendChild(mElm);
-    d.body.appendChild(eElm);
-    d.body.appendChild(indexElm);
+    document.body.appendChild(sElm);
+    document.body.appendChild(mElm);
+    document.body.appendChild(eElm);
+    document.body.appendChild(indexElm);
 
     sElm.innerHTML = "touchstart X : " + 0;
     mElm.innerHTML = "touchmove X : " + 0;

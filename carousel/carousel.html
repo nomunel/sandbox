@@ -2,61 +2,15 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<title></title>
+<meta name="viewport" content="width=320,user-scalable=0">
+<title>Carousel UI demo</title>
 <link rel="stylesheet" href="css/ui.css">
+<script src="js/classlist.min.js"></script>
 <script src="js/ui.js"></script>
-<style>
-/* carouselBnr */
-.carouselBnr{
-    position: relative;
-    height: 130px;
-    width: 100%;
-    overflow: hidden;
-    padding-bottom: 30px;
-}
-.carouselBnr .banners{
-    display: -webkit-box;
-    position: absolute;
-    left: 50%;
-}
-.carouselBnr .banners li{
-}
-.carouselBnr .nav{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
-.carouselBnr .nav li{
-    display: inline-block;
-    color: #ccc;
-}
-.carouselBnr .nav li.current{
-    color: #666;
-}
-
-.carouselBnr button{
-    position: absolute;
-    bottom: 0;
-}
-.carouselBnr button.disable{
-    color: #ccc;
-}
-.carouselBnr .prev{
-    left: 10px;
-}
-.carouselBnr .next{
-    right: 10px;
-}
-</style>
 </head>
 <body>
 
-<div id="carouselBnr" class="carouselBnr">
+<div id="js_carouselBnr1" class="carouselBnr">
     <ul class="banners">
         <li><a href="#bnr0"><img src="img/640_260_a.jpg" alt="" width="320" height="130"></a></li>
         <li><a href="#bnr1"><img src="img/640_260_b.jpg" alt="" width="320" height="130"></a></li>
@@ -75,51 +29,19 @@
     <button type="button" class="next">Next</button>
 </div>
 <script>
-var carousel = new ui.Carousel(carouselBnr,{
+var carousel = new ui.Carousel(js_carouselBnr1, {
     liWrapElm: '.banners',
     liElms: '.banners li',
     liWidth: 320,
-    prevBtnElm: '.prev',
-    nextBtnElm: '.next',
-    navElms: '.nav li',
-    autoPlayInterval: 3000,
-    debugMode: true
+    liIndex: 0, // Option
+    flick: true, // Option
+    prevBtnElm: '.prev', // Option
+    nextBtnElm: '.next', // Option
+    navElms: '.nav li', // Option
+    autoPlayInterval: 3000, // Option
+    debugMode: true // Option
 });
 </script>
-
-<div id="carouselBnr2" class="carouselBnr">
-    <ul class="banners">
-        <li><a href="#bnr0"><img src="img/640_260_a.jpg" alt="" width="320" height="130"></a></li>
-        <li><a href="#bnr1"><img src="img/640_260_b.jpg" alt="" width="320" height="130"></a></li>
-        <li><a href="#bnr2"><img src="img/640_260_c.jpg" alt="" width="320" height="130"></a></li>
-        <li><a href="#bnr3"><img src="img/640_260_d.jpg" alt="" width="320" height="130"></a></li>
-        <li><a href="#bnr4"><img src="img/640_260_e.jpg" alt="" width="320" height="130"></a></li>
-    </ul>
-    <ul class="nav">
-        <li>●</li>
-        <li>●</li>
-        <li>●</li>
-        <li>●</li>
-        <li>●</li>
-    </ul>
-    <button type="button" class="prev">Prev</button>
-    <button type="button" class="next">Next</button>
-</div>
-<script>
-var carousel2 = new ui.Carousel(carouselBnr2,{
-    liWrapElm: '.banners',
-    liElms: '.banners li',
-    liWidth: 320,
-    liIndex: 3,
-    flick: false,
-    // prevBtnElm: '.prev',
-    // nextBtnElm: '.next',
-    navElms: '.nav li',
-    autoPlayInterval: 3000,
-    debugMode: true
-});
-</script>
-
 
 </body>
 </html>
