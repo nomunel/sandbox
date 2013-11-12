@@ -105,8 +105,7 @@ var itemListControl1 = new ItemListControl({
     navElms: '.pagination',
     groupMemberNum: 10
 });
-var modal1 = new ModalWindow('#modal_gvgItemList', false);//scrollに追従させたい場合はoffset指定
-modal1.setMask('#modalMaskLayer');
+var modal1 = new ModalWindow('#modal_gvgItemList', '#modalMaskLayer', false);//scrollに追従させたい場合はoffset指定
 modal1.setOpen('#open_modal_gvgItemList');
 modal1.setClose('.closeButton');
 modal1.setClose('.items button');
