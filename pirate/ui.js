@@ -95,44 +95,45 @@ fn.set = function(setIndex){
     var self = this,
         index = self.index = setIndex,
         navLiElms = self.navLiElms,
-        displayVal,
+        groups = self.groups,
+        prevElms = self.prevElms,
+        nextElms = self.nextElms,
         i, il,
         j, jl;
-    for(i=0, il=self.groups.length; i<il; i++){
-        for(j=0, jl=self.groups[i].length; j<jl; j++){
-            (i===index) ? displayVal='block' : displayVal='none';
-            self.groups[i][j].style.display = displayVal;
+    for(i=0, il=groups.length; i<il; i++){
+        for(j=0, jl=groups[i].length; j<jl; j++){
+            groups[i][j].style.display = (i===index) ? 'block' : 'none';
         }
     }
     for(i=0, il=navLiElms.length; i<il; i++){
-        for(j=0, jl=self.groups.length; j<jl; j++){
+        for(j=0, jl=groups.length; j<jl; j++){
             if(self.navLiElms[i][j] === undefined){
                 console.log('"li of nav" missing.');
                 break;
             }
-            if(j===self.index){
+            if(j===index){
                 navLiElms[i][j].classList.add('current');
             }else{
                 navLiElms[i][j].classList.remove('current');
             }
         }
     }
-    if(self.index === 0){
+    if(index === 0){
         for(i=0, il=navLiElms.length; i<il; i++){
-            self.prevElms[i].disabled = true;
+            prevElms[i].disabled = true;
         }
     }else{
         for(i=0, il=navLiElms.length; i<il; i++){
-            self.prevElms[i].disabled = false;
+            prevElms[i].disabled = false;
         }
     }
-    if(self.index === self.groupNum-1){
+    if(index === self.groupNum-1){
         for(i=0, il=navLiElms.length; i<il; i++){
-            self.nextElms[i].disabled = true;
+            nextElms[i].disabled = true;
         }
     }else{
         for(i=0, il=navLiElms.length; i<il; i++){
-            self.nextElms[i].disabled = false;
+            nextElms[i].disabled = false;
         }
     }
 }
@@ -154,17 +155,19 @@ fn.listGrouping = function(){
     }
 }
 fn.prev = function(){
-    var self = this;
-    if(self.index > 0){
-        self.index--;
-        self.set(self.index);
+    var self = this,
+        index = self.index;
+    if(index > 0){
+        index--;
+        self.set(index);
     }
 }
 fn.next = function(){
-    var self = this;
-    if(self.index < self.groupNum-1){
-        self.index++;
-        self.set(self.index);
+    var self = this,
+        index = self.index;
+    if(index < self.groupNum-1){
+        index++;
+        self.set(index);
     }
 }
 })(this, this.document);
