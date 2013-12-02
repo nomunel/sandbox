@@ -1,0 +1,32 @@
+var ui = {};
+
+
+/**
+ * uaCheck
+*/
+(function(global){
+    var ns = global.ui,
+        ua = global.navigator.userAgent;
+    ns.uaCheck = function(){
+        if(ua.indexOf('Chrome') > 0 && ua.indexOf('Version') === -1){
+            return 'Chrome';
+        } else if(ua.indexOf('Android') > 0) {
+            return 'Android';
+        }
+    }
+})(this);
+
+/**
+ * Viewport fit for Android Default Browser
+*/
+(function(global, document){
+    if(global.ui.uaCheck() !== 'Android'){
+        return;
+    }
+    var html = document.lastChild;
+    function zoomResize(){
+        html.style.zoom  = global.innerWidth / 320;
+    }
+    zoomResize();
+    global.addEventListener('resize', zoomResize, false); 
+})(this, this.document);
