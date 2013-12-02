@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=320, user-scalable=0">
+<title>Viewport test</title>
+<style>
+body{
+    width: 320px;
+    margin: 0 auto;
+    overflow: hidden;/* 内容はみ出た際に横スクロールが発生しないよう */
+}
+div{
+    background-color: #ccc;
+    overflow: hidden;
+}
+</style>
+<script>
+'use strict';
+
 var ui = {};
 
 
@@ -5,13 +25,19 @@ var ui = {};
  * uaCheck
 */
 (function(global){
-    var ns = global.ui,
+    var ns = global.ui || (global.ui = {}),
         ua = global.navigator.userAgent;
     ns.uaCheck = function(){
         if(ua.indexOf('Chrome') > 0 && ua.indexOf('Version') === -1){
             return 'Chrome';
         } else if(ua.indexOf('Android') > 0) {
             return 'Android';
+        } else if(ua.indexOf('iPhone') > 0) {
+            return 'iPhone';
+        } else if(ua.indexOf('iPad') > 0) {
+            return 'iPad';
+        } else if(ua.indexOf('iPod') > 0) {
+            return 'iPod';
         }
     }
 })(this);
@@ -30,3 +56,49 @@ var ui = {};
     zoomResize();
     global.addEventListener('resize', zoomResize, false); 
 })(this, this.document);
+</script>
+</head>
+<body>
+<div>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+    <p>width: 320px; background-color: #ccc;</p>
+</div>
+</body>
+</html>
